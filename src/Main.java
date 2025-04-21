@@ -1,15 +1,35 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner in = new Scanner(System.in);
+
+        String [] quotes = {"The only thing we have to fear is fear itself." ,
+                "To be or not to be, that is the question.",
+                "Carpe diem.", "I think, therefore I am.", "Knowledge is power.",
+                "Less is more.", "United we stand, divided we fall.",
+                "You are never too old to set a new goal or to dream a new dream.",
+                "The journey of a thousand miles begins with a single step.",
+                "What doesn't kill you makes you stronger."};
+
+        while(true) {
+            try {
+                System.out.println("Print a quote by choosing a number 0-9: ");
+                int choice = in.nextInt();
+                System.out.println(quotes[choice] + "\n");
+                System.out.println("Would you like to see another quote? Reply with 'Yes' or 'No': ");
+                String choice2 = in.next();
+                if (choice2.equalsIgnoreCase("No")){
+                    break;
+                }else if (choice2.equalsIgnoreCase("Yes")){
+                    continue;
+                }else {
+                    System.out.println("Invalid entry! Try again");
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid entry. Please choose a number from 0-9! \n");
+            }
         }
     }
 }
